@@ -1,0 +1,36 @@
+#this is the pojo
+type Post {
+    id: ID!
+    title: String!
+    content: String
+}
+#this is the pojo
+type User {
+    id: ID
+    name: String!
+    email: String!
+    posts: [Post!]
+}
+# there is no double datatype present there so if we nead a value with deciaml then it is only float
+
+#this is the Query type
+type Query {
+#syntax is methodName in the controller: return value
+    getUserList:[User]
+    retrieveGetUserById(id: ID!): User
+    getAllPosts: [Post!]
+}
+# ! means that the value corresponfding to the variable canot be null
+#[] means a list of objects, in the service we can have List to handle this
+type Mutation {
+    createMakeUser(name: String!, email: String!,post:CreatePostInput): User
+    updateMakeUser(id:ID, name:String):User
+
+}
+
+input CreatePostInput {
+    title: String!
+    content: String
+    id: ID!
+}
+
